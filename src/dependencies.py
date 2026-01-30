@@ -1,5 +1,5 @@
 class Dependencies:
-    _required_libs=["pandas","numpy"]
+    _required_libs=["pandas","numpy","matplotlib","sympy","scipy"]
     _installed_libs={}
     @classmethod
     def check_import(cls,lib_name):
@@ -9,9 +9,21 @@ class Dependencies:
                 cls._installed_libs[lib_name]=True
                 return pd
             elif lib_name=="numpy":
-                import numpy as np
+                import numpy
                 cls._installed_libs[lib_name]=True
-                return np
+                return numpy
+            elif lib_name=="matplotlib":
+                import matplotlib.pyplot as plt
+                cls._installed_libs[lib_name]=True
+                return plt
+            elif lib_name=="sympy":
+                import sympy 
+                cls._installed_libs[lib_name]=True
+                return sympy
+            elif lib_name=="scipy":
+                import scipy.stats
+                cls._installed_libs[lib_name]=True
+                return scipy.stats
             else:
                 return None
         except ImportError:
@@ -30,3 +42,12 @@ class Dependencies:
     @classmethod
     def get_numpy(cls):
         return cls.check_import("numpy")
+    @classmethod
+    def get_plt(cls):
+        return cls.check_import("matplotlib")
+    @classmethod
+    def get_sympy(cls):
+        return cls.check_import("sympy")
+    @classmethod
+    def get_scipy(cls):
+        return cls.check_import("scipy")
