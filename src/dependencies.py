@@ -21,9 +21,9 @@ class Dependencies:
                 cls._installed_libs[lib_name]=True
                 return sympy
             elif lib_name=="scipy":
-                import scipy.stats
+                import scipy
                 cls._installed_libs[lib_name]=True
-                return scipy.stats
+                return scipy
             else:
                 return None
         except ImportError:
