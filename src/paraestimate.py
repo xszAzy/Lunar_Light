@@ -7,26 +7,26 @@ class Paras:
         # 不同场景的典型亮度比例（研究数据）
         brightness_ratios = {
             'OLED': {
-                'B': 0.4 if auto_brightness else 0.5,  # 浏览：暗色模式+低亮度
-                'V': 0.7,  # 视频：中等亮度
-                'G': 0.9,  # 游戏：高亮度激发
-                'M': 0.6   # 综合：平均
+                'B': 0.3 if auto_brightness else 0.4,  # 浏览：暗色模式+低亮度
+                'V': 0.5,  # 视频：中等亮度
+                'G': 0.8,  # 游戏：高亮度激发
+                'M': 0.4   # 综合：平均
             },
             'LCD': {
-                'B': 0.6,  # LCD背光变化小
-                'V': 0.8,
-                'G': 0.95,
-                'M': 0.75
+                'B': 0.4,  # LCD背光变化小
+                'V': 0.6,
+                'G': 0.9,
+                'M': 0.5
             }
         }
         
         # 内容影响（OLED特有）
         if screen_type == 'OLED':
             content_factor = {
-                'B': 0.9,  # 浏览：多暗色、文字
+                'B': 0.8,  # 浏览：多暗色、文字
                 'V': 1.0,  # 视频：全屏彩色
-                'G': 1.1,  # 游戏：鲜艳色彩
-                'M': 1.0
+                'G': 1.05,  # 游戏：鲜艳色彩
+                'M': 0.9
             }
             return brightness_ratios['OLED'][scene] * content_factor[scene]
         else:
